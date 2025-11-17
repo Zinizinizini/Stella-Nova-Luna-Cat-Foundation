@@ -10,35 +10,47 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 100%;
       background: #0d0d0d;
       font-family: Arial, sans-serif;
-      overflow: hidden;
     }
 
-    .chart-container {
+    /* Container for the first iframe with cropping */
+    .iframe-wrapper {
+      position: relative;
       width: 100%;
-      height: 100vh;
+      height: 80vh; /* Adjust height as needed */
+      overflow: hidden; /* Hide the top 5% */
+    }
+
+    .iframe-wrapper iframe {
+      position: absolute;
+      top: -5%; /* Hides the top 5% */
+      left: 0;
+      width: 100%;
+      height: 105%; /* Add extra to compensate for top shift */
       border: none;
-      overflow: hidden;
     }
 
-    iframe {
+    /* Second iframe normal display */
+    .dex-iframe {
       width: 100%;
-      height: 100%;
-      border: 0;
+      height: 80vh; /* Adjust as needed */
+      border: none;
     }
   </style>
 </head>
 
 <body>
-  <div class="chart-container">
-    <!-- Dexscreener embed -->
-    <iframe 
-      src="https://stellanovalunafoundation.onhercules.app/"
-      src="https://dexscreener.com/solana/FhBE94EG8E2LyckpzWNLo6DmQvDr3zHsLU6BDRVZpump?embed=1&theme=dark"
-      allowfullscreen
-    ></iframe>
+  <!-- First page: StellaNovaLuna foundation, top 5% hidden -->
+  <div class="iframe-wrapper">
+    <iframe src="https://stellanovalunafoundation.onhercules.app/" allowfullscreen></iframe>
   </div>
+
+  <!-- Second page: Dexscreener -->
+  <iframe 
+    class="dex-iframe" 
+    src="https://dexscreener.com/solana/FhBE94EG8E2LyckpzWNLo6DmQvDr3zHsLU6BDRVZpump?embed=1&theme=dark"
+    allowfullscreen>
+  </iframe>
 </body>
 </html>
